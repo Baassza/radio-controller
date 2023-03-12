@@ -246,8 +246,10 @@ class RadioState {
     final addstationRm = RM.inject(() => RadioStation());
     final dataLoad = await rm.state.getDataFromIndex(index);
     addstationRm.setState((s){
-      s.name = dataLoad!["name"];
-      s.status = dataLoad!["status"];
+      if(dataLoad!=null){
+		  s.name = dataLoad!["name"];
+		  s.status = dataLoad!["status"];
+	  }
       return null;
     });
     GlobalKey<FormState> formKey = GlobalKey<FormState>();
